@@ -63,8 +63,9 @@ class SNESBlockProblem():
             self.J_form = J_form
 
         # Compile all forms
-        self.F_form_all_ufc = dolfinx.fem.form(F_form)
-        self.J_form_all_ufc = dolfinx.fem.form(J_form)
+        jit_parameters = {"timeout": 50}
+        self.F_form_all_ufc = dolfinx.fem.form(F_form, jit_params=jit_parameters)
+        self.J_form_all_ufc = dolfinx.fem.form(J_form, jit_params=jit_parameters)
 
         # By default, copy all forms as the forms used in assemblers
         self.F_form = self.F_form_all_ufc.copy()
