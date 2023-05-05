@@ -148,7 +148,7 @@ class SNESBlockProblem():
 
             self.snes.setMonitor(self._monitor_block)
 
-        self.snes.setConvergenceTest(self._converged)
+        #self.snes.setConvergenceTest(self._converged)
         self.snes.setOptionsPrefix(prefix)
         self.snes.setFromOptions()
 
